@@ -1,0 +1,10 @@
+#PBS -q regular
+#PBS -l mppwidth=24
+#PBS -l walltime=0:55:00
+#PBS -N Pinatubo
+#PBS -e Pinatubo.$PBS_JOBID.err
+#PBS -o Pinatubo.$PBS_JOBID.out
+
+cd $PBS_O_WORKDIR
+#qsub -W depend=afternotok:$PBS_JOBI pinatubo.pbs
+aprun -n 1 -d 24 ./volcano.R --year=1992 --month=7 --nmonths=6 --obs='F' --version='3.5.1'

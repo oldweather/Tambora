@@ -1,0 +1,12 @@
+#PBS -q regular
+#PBS -l mppwidth=24
+#PBS -l walltime=00:35:00
+#PBS -N ff.k
+#PBS -e ff.k.$PBS_JOBID.err
+#PBS -o ff.k.$PBS_JOBID.out
+
+module load ffmpeg
+cd $GSCRATCH/images
+rm Krakatoa.351.mp4
+aprun -n 1 -d 24 ffmpeg -r 48 -pattern_type glob -i Tambora.3.5.1/188\*.png -c:v libx264 -threads 24 -preset slow -tune animation -profile:v high -level 4.1 -pix_fmt yuv420p -crf 22 -c:a copy Krakatoa.351.mp4
+

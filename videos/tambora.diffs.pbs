@@ -1,0 +1,14 @@
+#PBS -q regular
+#PBS -l mppwidth=96
+#PBS -l walltime=0:55:00
+#PBS -N Tambora
+#PBS -e Tambora.$PBS_JOBID.err
+#PBS -o Tambora.$PBS_JOBID.out
+
+cd $PBS_O_WORKDIR
+#qsub -W depend=afternotok:$PBS_JOBI tambora.pbs
+aprun -n 1 -d 24 ./volcano.diffs.R --year=1815 --month=1 --nmonths=6 --version='3.5.6'&
+aprun -n 1 -d 24 ./volcano.diffs.R --year=1815 --month=7 --nmonths=6 --version='3.5.6'&
+aprun -n 1 -d 24 ./volcano.diffs.R --year=1816 --month=1 --nmonths=6 --version='3.5.6'&
+aprun -n 1 -d 24 ./volcano.diffs.R --year=1816 --month=7 --nmonths=6 --version='3.5.6'&
+wait

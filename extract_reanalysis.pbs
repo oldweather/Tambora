@@ -1,0 +1,10 @@
+#PBS -q regular
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=2:31:00
+#PBS -N Tamb.R
+#PBS -e Tamb.R.$PBS_JOBID.err
+#PBS -o Tamb.R.$PBS_JOBID.out
+
+cd $PBS_O_WORKDIR
+R --no-save < 20CR_compare.bydate.R
+

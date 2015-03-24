@@ -1,0 +1,10 @@
+#PBS -q regular
+#PBS -l mppwidth=24
+#PBS -l walltime=0:55:00
+#PBS -N Pinatubo.E
+#PBS -e Pinatubo.E.$PBS_JOBID.err
+#PBS -o Pinatubo.E.$PBS_JOBID.out
+
+cd $PBS_O_WORKDIR
+#qsub -W depend=afternotok:$PBS_JOBI pinatubo.era20c.pbs
+aprun -n 1 -d 24 ./volcano.era20C.R --year=1991 --month=1 --nmonths=24

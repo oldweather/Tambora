@@ -1,0 +1,10 @@
+#PBS -q regular
+#PBS -l mppwidth=24
+#PBS -l walltime=0:55:00
+#PBS -N Krakatoa
+#PBS -e Krakatoa.$PBS_JOBID.err
+#PBS -o Krakatoa.$PBS_JOBID.out
+
+cd $PBS_O_WORKDIR
+#qsub -W depend=afternotok:$PBS_JOBI krakatoa.pbs
+aprun -n 1 -d 24 ./volcano.R --year=1883 --month=12 --nmonths=1 --version='3.5.1'
