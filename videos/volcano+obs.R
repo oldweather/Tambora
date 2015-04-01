@@ -99,7 +99,7 @@ Draw.obs<-function(year,month,day,hour,Options,Trange=10,size=0.015) {
       }
       t2m<-t2m-(Dates[[w[1]]]$station[[station]]$v354$t2m.normal-273.15)
       spread<-Dates[[w[1]]]$station[[station]]$v354$t2m.spread
-      if(abs(t2m/spread)>2) col=rgb(255,215,0,255,maxColorValue=255)
+      if(abs(t2m/spread)>3) col=rgb(1,1,1,1)
       else col=rgb(0,0,0,1)
       if(t2m>0) fill=rgb(1,0,0,min(0.99,t2m/Trange))
       else fill=rgb(0,0,1,min(0.99,-1*t2m/Trange))
