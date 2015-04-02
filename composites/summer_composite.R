@@ -1,4 +1,4 @@
-# Make summer (JJA) 1816 Temperature anomaly composites
+# Make summer (JJA) 1815-7 Temperature anomaly composites
 
 library(GSDF.TWCR)
 
@@ -23,15 +23,27 @@ get.anomaly.composite<-function(date.range,version) {
    r<-s
    r$data[]<-v$data/(v$data+s$data**2)
    c2<-c
-   c2$meta$pole.lat<--40
+   c2$meta$pole.lat<-90
    c2$meta$pole.lon<-0
    c<-GSDF.regrid.2d(c,c2)
    r<-GSDF.regrid.2d(r,c2)
-   w<-which(r$data<0.7)
+   w<-which(r$data<0.5)
    is.na(c$data[w])<-TRUE
    return(c)
 }
 
-c<-get.anomaly.composite(c('1816-06-01:00','1816-08-31:23'),'3.5.4')
-c2<-get.anomaly.composite(c('1816-06-01:00','1816-08-31:23'),'3.5.5'
-#GSDF.pplot.2d(c,d,x.range=c(160,210),y.range=c(-20,25),levels=seq(-4,4,.2))
+for(year in c(1815,1816,1817)) {
+
+   c<-get.anomaly.composite(c(
+        sprintf("%04d-06-01:00",year),
+        sprintf("%04d-08-31:23",year)),'3.5.4')
+   c2<-get.anomaly.composite(c(
+        sprintf("%04d-06-01:00",year),
+        sprintf("%04d-08-31:23",year)),'3.5.6')
+   d<-c
+   d$data[]<-c2$data-c$data
+   png(filename=sprintf("summer_%04d.png",year),width=1024,height=768,pointsize=24)
+   GSDF.pplot.2d(c,d,x.range=c(90,220),y.range=c(30,80),levels=seq(-5,5,.2),
+                 x.scale=0,y.scale=0,x.label='',y.label='')
+   dev.off()
+}
