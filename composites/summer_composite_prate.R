@@ -16,8 +16,9 @@ get.anomaly.composite<-function(date.range,version) {
    s<-TWCR.get.slab.from.hourly('prmsl',
                date.range<-date.range,
                type='spread',version=version)
-   t$data[]<-t$data/n$data
    c<-GSDF.reduce.1d(t,'time',mean)
+   n<-GSDF.reduce.1d(n,'time',mean)
+   c$data[]<-n$data/c$data
    v<-GSDF.reduce.1d(p,'time',var)
    s<-GSDF.reduce.1d(s,'time',mean)
    r<-s
@@ -42,8 +43,8 @@ for(year in c(1815,1816,1817)) {
         sprintf("%04d-08-31:23",year)),'3.5.6')
    d<-c
    d$data[]<-c2$data/c$data
-   c$data[]<-log(c$data)*-1
-   d$data[]<-log(d$data)*-1
+   c$data[]<-log(c$data)
+   d$data[]<-log(d$data)
    png(filename=sprintf("summer_prate_%04d.png",year),width=1024,height=768,pointsize=24)
    GSDF.pplot.2d(c,d,x.range=c(90,220),y.range=c(30,80),levels=seq(-1.2,1.2,.1),
                  x.scale=0,y.scale=0,x.label='',y.label='')
