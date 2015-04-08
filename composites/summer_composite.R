@@ -6,7 +6,7 @@ get.anomaly.composite<-function(date.range,version) {
 
    n<-TWCR.get.slab.from.hourly('air.2m',
             date.range<-date.range,
-            type='normal',version='3.5.4')
+            type='normal',version='3.5.6')
    t<-TWCR.get.slab.from.hourly('air.2m',
                date.range<-date.range,
                type='mean',version=version)
