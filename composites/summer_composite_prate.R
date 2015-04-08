@@ -42,10 +42,10 @@ for(year in c(1815,1816,1817)) {
         sprintf("%04d-08-31:23",year)),'3.5.6')
    d<-c
    d$data[]<-c2$data/c$data
-   c$data[]<-log(c$data)
-   d$data[]<-log(d$data)
+   c$data[]<-log(c$data)*-1
+   d$data[]<-log(d$data)*-1
    png(filename=sprintf("summer_prate_%04d.png",year),width=1024,height=768,pointsize=24)
-   GSDF.pplot.2d(c,d,x.range=c(90,220),y.range=c(30,80),levels=seq(1.2,-1.2,-.1),
+   GSDF.pplot.2d(c,d,x.range=c(90,220),y.range=c(30,80),levels=seq(-1.2,1.2,.1),
                  x.scale=0,y.scale=0,x.label='',y.label='')
    dev.off()
 }
