@@ -37,11 +37,11 @@ get.anomaly.composite<-function(date.range,version) {
    return(c)
 }
 
-c1<-get.anomaly.composite(c("1815-06-01:00","1815-06-30:23"),'3.5.6')
-c2<-get.anomaly.composite(c("1815-07-01:00","1815-07-31:23"),'3.5.6')
-c3<-get.anomaly.composite(c("1815-08-01:00","1815-08-31:23"),'3.5.6')
+c1<-get.anomaly.composite(c("1816-06-01:00","1816-06-30:23"),'3.5.6')
+c2<-get.anomaly.composite(c("1816-07-01:00","1816-07-31:23"),'3.5.6')
+c3<-get.anomaly.composite(c("1816-08-01:00","1816-08-31:23"),'3.5.6')
 
-png(filename="1815_monthly.png",width=412,height=768,pointsize=24)
+png(filename="1816_monthly.png",width=412,height=768,pointsize=24)
    p1<-GSDF.plot.2d(c1,x.range=c(150,215),y.range=c(30,70),
                     levels=seq(-5,5,.2),draw=FALSE,
                     x.scale=0,y.scale=0,x.label='',y.label='')
