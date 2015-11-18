@@ -94,7 +94,7 @@ cor.station<-function(station) { # station is an integer in range 1:51
     file='correlations.md',append=TRUE)
 }
 
-cat("Stations with good data\n",file='correlations.md',append=FALSE)
+cat("Stations with good data\n\n",file='correlations.md',append=FALSE)
 cat("| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |\n",
     file='correlations.md',append=TRUE)
 cat("| :------- |:---------:|:---------:|:--------:|:--------:|\n",
@@ -104,7 +104,7 @@ for(station in good.stations) {
    cor.station(station)
 }
 
-cat("Other stations\n",file='correlations.md',append=TRUE)
+cat("\nOther stations\n\n",file='correlations.md',append=TRUE)
 cat("| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |\n",
     file='correlations.md',append=TRUE)
 cat("| :------- |:---------:|:---------:|:--------:|:--------:|\n",
