@@ -1,4 +1,5 @@
-Stations with good data| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |
+Stations with good data
+| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |
 | :------- |:---------:|:---------:|:--------:|:--------:|
 | Althorp              | 0.96 | 0.96 | 0.49 | 0.56 |
 | Armagh               | 0.98 | 0.98 | 0.50 | 0.50 |
@@ -23,6 +24,7 @@ Stations with good data| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 
 | Ylitornio            | 0.74 | 0.82 | 0.57 | 0.58 |
 | Zitenice             | 0.93 | 0.94 | 0.75 | 0.79 |
 | Zwanenburg           | 0.95 | 0.96 | 0.72 | 0.76 |
+
 Other stations
 | Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |
 | :------- |:---------:|:---------:|:--------:|:--------:|
