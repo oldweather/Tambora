@@ -89,25 +89,25 @@ cor.station<-function(station) { # station is an integer in range 1:51
     slp.356<-cor(v356$prmsl.mean,prmsl,use='na.or.complete',method='pearson')
     at.356<-cor(v356$t2m.mean,t2m,use='na.or.complete',method='pearson')
 
-    cat(sprintf("| %-20s | %4.2f | %4.2f | %4.2f | %4.2f |\n",PP[[station]]$Station[1],
+    cat(sprintf("| %-20s | %4.2f | %4.2f | %4.2f | %4.2f |\r\n",PP[[station]]$Station[1],
      slp.354,slp.356,at.354,at.356),
     file='correlations.md',append=TRUE)
 }
 
-cat("Stations with good data",file='correlations.md',append=FALSE)
-cat("| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |\n",
+cat("Stations with good data\r\n",file='correlations.md',append=FALSE)
+cat("| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |\r\n",
     file='correlations.md',append=TRUE)
-cat("| :------- |:---------:|:---------:|:--------:|:--------:|\n",
+cat("| :------- |:---------:|:---------:|:--------:|:--------:|\r\n",
     file='correlations.md',append=TRUE)
 
 for(station in good.stations) {
    cor.station(station)
 }
 
-cat("\nOther stations\n",file='correlations.md',append=TRUE)
-cat("| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |\n",
+cat("\r\nOther stations\r\n",file='correlations.md',append=TRUE)
+cat("| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |\r\n",
     file='correlations.md',append=TRUE)
-cat("| :------- |:---------:|:---------:|:--------:|:--------:|\n",
+cat("| :------- |:---------:|:---------:|:--------:|:--------:|\r\n",
     file='correlations.md',append=TRUE)
 
 for(station in bad.stations) {
