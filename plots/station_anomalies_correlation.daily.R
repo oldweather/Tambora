@@ -1,7 +1,13 @@
-#Calculate station:reanalysis correlations for each station
+#  Calculate station:reanalysis correlations for each station
+#   ourtput them as a markdown formatted table
 
 library(grid)
 library(chron)
+
+# Divide stations into high-quality and 'other'
+good.stations<-c(2,3,4,7,8,13,16,18,19,20,22,24,25,26,27,28,33,36,46,47,49,50,51)
+bad.stations<-c(1,5,6,9,10,11,12,14,15,17,21,23,29,30,31,32,34,35,37,38,39,40,41,42,43,44,45,48)
+
 
 # Load station data and Reanalysis data
 load('../Yuri/0_all_station_and_travel_pressure_data.Rdata')
@@ -78,15 +84,19 @@ cor.station<-function(station) { # station is an integer in range 1:51
     v356$prmsl.mean<-v356$prmsl.mean-v354$prmsl.normal
 
 
-    cor.slp.p<-cor(v356$prmsl.mean,prmsl,use='na.or.complete',method='pearson')
-    cor.at.p<-cor(v356$t2m.mean,t2m,use='na.or.complete',method='pearson')
-    cor.slp.s<-cor(v356$prmsl.mean,prmsl,use='na.or.complete',method='spearman')
-    cor.at.s<-cor(v356$t2m.mean,t2m,use='na.or.complete',method='spearman')
+    slp.354<-cor(v354$prmsl.mean,prmsl,use='na.or.complete',method='pearson')
+    at.354<-cor(v354$t2m.mean,t2m,use='na.or.complete',method='pearson')
+    slp.356<-cor(v356$prmsl.mean,prmsl,use='na.or.complete',method='pearson')
+    at.356<-cor(v356$t2m.mean,t2m,use='na.or.complete',method='pearson')
 
-    print(sprintf("%-20s %4.2f %4.2f %4.2f %4.2f",PP[[station]]$Station[1],
-     cor.slp.p,cor.slp.s,cor.at.p,cor.at.s))
+    print(sprintf("| %-20s | %4.2f | %4.2f | %4.2f | %4.2f |",PP[[station]]$Station[1],
+     slp.354,slp.356,at.354,at.356))
 }
 
-for(station in seq(1,51)) {
+print("Stations with good data")
+print("| Station  | SLP 3.5.4 | SLP 3.5.6 | AT 3.5.4 | AT 3.5.6 |")
+print("| :------- |:---------:|:---------:|:--------:|:--------:|")
+
+for(station in good.stations) {
    cor.station(station)
 }
