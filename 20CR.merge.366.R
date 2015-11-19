@@ -29,7 +29,7 @@ get.ll<-function(index) {
 # Get means and spreads for each position, for the given time.
 get.comparisons<-function(year,month,day,hour,lats,lons,version) {
   
-  if(year<1815 || year > 1816) {
+  if(year<1815 || year > 1817) {
     md<-rep(NA,length(lats))
     return(list(t2m.mean=md,t2m.spread=md,
                 t2m.normal=md,
