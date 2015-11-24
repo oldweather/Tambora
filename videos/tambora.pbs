@@ -1,16 +1,28 @@
 #PBS -q regular
-#PBS -l mppwidth=144
+#PBS -l mppwidth=120
 #PBS -l walltime=0:55:00
 #PBS -N Tambora
 #PBS -e Tambora.$PBS_JOBID.err
 #PBS -o Tambora.$PBS_JOBID.out
 
+export LANG='' # Jobs default to UTF8, which screws up reading obs files
+
 cd $PBS_O_WORKDIR
-#qsub -W depend=afternotok:$PBS_JOBI tambora.pbs
-aprun -n 1 -d 24 ./volcano+precip.R --year=1815 --month=1 --nmonths=6 --version='3.5.6'&
-aprun -n 1 -d 24 ./volcano+precip.R --year=1815 --month=7 --nmonths=6 --version='3.5.6'&
-aprun -n 1 -d 24 ./volcano+precip.R --year=1816 --month=1 --nmonths=6 --version='3.5.6'&
-aprun -n 1 -d 24 ./volcano+precip.R --year=1816 --month=7 --nmonths=6 --version='3.5.6'&
-aprun -n 1 -d 24 ./volcano+precip.R --year=1817 --month=1 --nmonths=6 --version='3.5.6'&
-aprun -n 1 -d 24 ./volcano+precip.R --year=1817 --month=7 --nmonths=6 --version='3.5.6'&
+qsub -W depend=afternotok:$PBS_JOBI tambora.pbs
+aprun -n 1 -d 24 ./volcano.dailyT.R --year=1815 --month=6 --nmonths=7 --version='3.6.6'&
+aprun -n 1 -d 24 ./volcano.dailyT.R --year=1816 --month=1 --nmonths=6 --version='3.6.6'&
+aprun -n 1 -d 24 ./volcano.dailyT.R --year=1816 --month=7 --nmonths=6 --version='3.6.6'&
+aprun -n 1 -d 24 ./volcano.dailyT.R --year=1817 --month=1 --nmonths=6 --version='3.6.6'&
+aprun -n 1 -d 24 ./volcano.dailyT.R --year=1817 --month=7 --nmonths=6 --version='3.6.6'&
 wait
+
+# Now make the video
+cd $SCRATCH/images
+rm Tambora.366.mp4
+# Get rid of empty images - they make ffmpeg stop processing
+#  These usually come from disc problems in the creation step.
+find $SCRATCH/images/Tambora.3.6.6 -type f -empty -delete
+
+module load ffmpeg
+
+aprun -n 1 -d 24 ffmpeg -r 48 -pattern_type glob -i Tambora.3.6.6/\*.png -c:v libx264 -threads 16 -preset slow -tune animation -profile:v high -level 4.2 -pix_fmt yuv420p -crf 22 -c:a copy Tambora.366.mp4
