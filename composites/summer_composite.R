@@ -39,7 +39,7 @@ for(year in c(1815,1816,1817)) {
         sprintf("%04d-08-31:23",year)),'3.5.4')
    c2<-get.anomaly.composite(c(
         sprintf("%04d-06-01:00",year),
-        sprintf("%04d-08-31:23",year)),'3.5.6')
+        sprintf("%04d-08-31:23",year)),'3.6.6')
    d<-c
    d$data[]<-c2$data-c$data
    png(filename=sprintf("summer_%04d.png",year),width=1024,height=768,pointsize=24)

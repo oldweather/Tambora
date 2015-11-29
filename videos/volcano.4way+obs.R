@@ -95,11 +95,11 @@ Draw.obs<-function(year,month,day,hour,Options,Trange=10,size=0.015,version=vers
       if(version=='3.5.6') t.diff<-t2m-Station.anomalies$t2m[[station]]$v356.mean[w[1]]
       if(version=='3.6.4') t.diff<-t2m-Station.anomalies$t2m[[station]]$v364.mean[w[1]]
       if(version=='3.6.6') t.diff<-t2m-Station.anomalies$t2m[[station]]$v366.mean[w[1]]
-      if(abs(t.diff/spread)>3) col=rgb(1,1,1,1)
-      else col=rgb(0,0,0,1)
+      #if(abs(t.diff/spread)>3) col=rgb(1,1,1,1)
+      col=rgb(0,0,0,1)
       if(t2m>0) fill=rgb(1,0,0,min(0.99,t2m/Trange))
       else fill=rgb(0,0,1,min(0.99,-1*t2m/Trange))
-      gp<-gpar(col=col,fill=fill,lwd=2)
+      gp<-gpar(col=col,fill=fill,lwd=1)
       grid.points(x=unit(Lon,'native'),
                   y=unit(Lat,'native'),
                   pch=21,

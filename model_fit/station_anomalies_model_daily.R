@@ -129,11 +129,11 @@ model.station<-function(station) { # station is an integer in range 1:51
     w<-which(!is.na(t2m)&!is.na(aerosol.diff))
     lm.1a<-odregress(cbind(v354$t2m.mean[w],aerosol.diff[w]),t2m[w])
     w<-which(!is.na(t2m)&!is.na(aerosol.diff)&!is.na(sst.diff))
-    lm.2f<-odregress(cbind(v354$t2m.mean[w],forced.diff[w],sst.diff[w]),t2m[w])
+    lm.2f<-odregress(cbind(v354$t2m.mean[w],aerosol.diff[w],sst.diff[w]),t2m[w])
 
     return(list(lm.0f=lm.0f,lm.1f=lm.1f,lm.2f=lm.2f,lm.1s=lm.1s,lm.1a=lm.1a,lm.cf=lm.cf,
                 dates=dates,obs=t2m,
-                v354=v354$t2m.mean,v366=v366$t2m.mean,
+                v354=v354$t2m.mean,v366=v366$t2m.mean,spread<-v366$t2m.spread,
                 aerosol.diff=aerosol.diff,sst.diff=sst.diff,forced.diff=forced.diff))
 }
 
