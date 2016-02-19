@@ -1,4 +1,4 @@
-#!/usr/common/graphics/R/R-3.1.1/bin/Rscript --no-save
+#!/usr/bin/env Rscript --no-save
 
 # Pressures and temperatures from 20CR2c for 1815-17
 # Show 24-hour running mean temperatures (avoids diurnal cycle problem).
