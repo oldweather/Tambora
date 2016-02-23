@@ -45,7 +45,25 @@ for(year in c(1816)) {
    d$data[]<-c2$data-c$data
    png(filename=sprintf("summer_%04d_panel.png",year),width=600,height=1024,pointsize=24)
    trellis.par.set('axis.text',gpar(cex=2))
-   GSDF.pplot.2d(c,d,x.range=c(165,205),y.range=c(35,75),levels=seq(-4,4,.2),
+    grid.newpage()
+    pushViewport(viewport(x = 0, y = 0.66, width = 1, height = 0.33,
+        just = c("left", "bottom")))
+    m1 <- GSDF.plot.2d(c2,draw = F, x.range=c(165,205),y.range=c(40,65),levels=seq(-5,5,.2),
                  x.scale=0,y.scale=0,x.label='',y.label='')
+    print(m1, newpage = F)
+    popViewport()
+    pushViewport(viewport(x = 0, y = 0.33, width = 1, height = 0.33,
+        just = c("left", "bottom")))
+    m2 <- GSDF.plot.2d(c,draw = F, x.range=c(165,205),y.range=c(40,65),levels=seq(-5,5,.2),
+                 x.scale=0,y.scale=0,x.label='',y.label='')
+    print(m2, newpage = F)
+    popViewport()
+    pushViewport(viewport(x = 0, y = 0, width = 1, height = 0.33,
+        just = c("left", "bottom")))
+    m3 <- GSDF.plot.2d(d,draw = F, x.range=c(165,205),y.range=c(40,65),levels=seq(-5,5,.2),
+                 x.scale=0,y.scale=0,x.label='',y.label='')
+    print(m3, newpage = F)
+    popViewport()
+
    dev.off()
 }
