@@ -125,11 +125,13 @@ cor.station<-function(station) { # station is an integer in range 1:51
     slp.366<-cor(v366$prmsl.mean,prmsl,use='na.or.complete',method='pearson')
     at.366<-cor(v366$t2m.mean,t2m,use='na.or.complete',method='pearson')
 
+    gp<-gpar(col=rgb(0,0,0,1),fill=rgb(0,0,0,1))
+    if(at.356>at.354) gp<-gpar(col=rgb(1,0,0,1),fill=rgb(1,0,0,1))
     grid.lines(x=unit(c(0.05,0.4),'native'),
-                y=unit(c(at.354,at.356),'native'))
+                y=unit(c(at.354,at.356),'native'),gp=gp)
     grid.points(x=unit(c(0.05,0.4),'native'),
 	    y=unit(c(at.354,at.356),'native'),
-	    size=unit(0.01,'npc'),pch=20)
+	    size=unit(0.01,'npc'),pch=20,gp=gp)
     return(at.356)
 
 

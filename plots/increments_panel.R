@@ -53,11 +53,13 @@ cor.station<-function(station) { # station is an integer in range 1:51
     slp.356<-sd(v356$prmsl.mean-v356$prmsl.fd,na.rm=TRUE)
     t2m.356<-sd(v356$t2m.mean-v356$t2m.fd,na.rm=TRUE)
 
+    gp<-gpar(col=rgb(0,0,0,1),fill=rgb(0,0,0,1))
+    if(slp.354>slp.356) gp<-gpar(col=rgb(1,0,0,1),fill=rgb(1,0,0,1))
     grid.lines(x=unit(c(0.05,0.4),'native'),
-                y=unit(c(slp.354,slp.356),'native'))
+                y=unit(c(slp.354,slp.356),'native'),gp=gp)
     grid.points(x=unit(c(0.05,0.4),'native'),
 	    y=unit(c(slp.354,slp.356),'native'),
-	    size=unit(0.01,'npc'),pch=20)
+	    size=unit(0.01,'npc'),pch=20,gp=gp)
    return(slp.356)
 
 }
