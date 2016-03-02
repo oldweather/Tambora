@@ -3,7 +3,7 @@
 # Pressures and temperatures from 20CR2c for 1815-17
 # Show 24-hour running mean temperatures (avoids diurnal cycle problem).
 
-# Shows a weather change at 6-hour intervals
+# Shows a weather change at intervals
 
 library(GSDF.TWCR)
 library(GSDF.WeatherMap)
