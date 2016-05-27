@@ -127,6 +127,12 @@ plot.station<-function(station) { # station is an integer in range 1:51
 	     grid.lines(x=unit(p.x,'native'),
 			  y=unit(p.y,'native'),
 			  gp=gp)
+	  # Mark the zero line
+	     gp=gpar(col=rgb(0.5,0.5,0.5,1),fill=rgb(0,0,0,1))
+
+	     grid.lines(x=unit(date.range,'native'),
+			  y=unit(c(0,0),'native'),
+			  gp=gp)
 
 
 	     # Analysis spreads
@@ -200,6 +206,13 @@ plot.station<-function(station) { # station is an integer in range 1:51
 			format=c(dates = "y/m/d", times = "h:m:s"))
 	     grid.lines(x=unit(p.x,'native'),
 			  y=unit(p.y,'native'),
+			  gp=gp)
+
+	  # Mark the zero line
+	     gp=gpar(col=rgb(0.5,0.5,0.5,1),fill=rgb(0,0,0,1))
+
+	     grid.lines(x=unit(date.range,'native'),
+			  y=unit(c(0,0),'native'),
 			  gp=gp)
 
 

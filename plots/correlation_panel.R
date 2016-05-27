@@ -146,7 +146,7 @@ pdf(file="Correlation.panel.pdf",
                           just=c("left","bottom"),name="Page",clip='off'))
        pushViewport(plotViewport(margins=c(3,4,0,0)))
           pushViewport(dataViewport(c(0,1),c(0,1),clip='off'))
-             grid.xaxis(at=c(0.05,0.4),label=c('No forcing','With forcing'),main=T)
+             grid.xaxis(at=c(0.05,0.4),label=c('No volcanic\naerosol','With volcanic\naerosol'),main=T)
              grid.yaxis(main=T)
              grid.text('Correlation',x=unit(-3,'lines'),rot=90)
 
