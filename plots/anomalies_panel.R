@@ -255,9 +255,9 @@ plot.station<-function(station) { # station is an integer in range 1:51
        pushViewport(plotViewport(margins=c(4,6,0,0)))
 	  pushViewport(dataViewport(c(pmin,pmax),c(pmin,pmax),clip='off'))
 	     grid.xaxis()
-	     grid.text('Observed SLP',y=unit(-3,'lines'))
+	     grid.text('Observed SLP (hPa)',y=unit(-3,'lines'))
 	     grid.yaxis(main=T)
-	     grid.text('Reanalysis SLP',x=unit(-4,'lines'),rot=90)
+	     grid.text('Reanalysis SLP (hPa)',x=unit(-4,'lines'),rot=90)
 
 	     for(ensda in c('v356')) { # Order matters 
                  v<-get(ensda)
@@ -289,9 +289,9 @@ plot.station<-function(station) { # station is an integer in range 1:51
 	  pushViewport(dataViewport(c(tmin,tmax),c(tmin,tmax),clip='off'))
 
 	     grid.xaxis()
-	     grid.text('Observed AT',y=unit(-3,'lines'))
+	     grid.text('Observed AT (C)',y=unit(-3,'lines'))
 	     grid.yaxis(main=T)
-	     grid.text('Reanalysis AT',x=unit(-4,'lines'),rot=90)
+	     grid.text('Reanalysis AT (C)',x=unit(-4,'lines'),rot=90)
 
 	     for(ensda in c('v356')) { # Order matters
                  v<-get(ensda)
